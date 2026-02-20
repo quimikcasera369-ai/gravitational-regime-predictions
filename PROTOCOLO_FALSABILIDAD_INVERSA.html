@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test de Confirmación Fuerte — Protocolo de Falsabilidad Inversa</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #131a30;
+      --text: #e8ecf8;
+      --muted: #b8c2df;
+      --accent: #7aa2ff;
+      --ok: #57d38c;
+      --bad: #ff7a90;
+      --border: #273354;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+    h1, h2, h3 { line-height: 1.2; }
+    h1 { margin-bottom: 6px; }
+    h2 {
+      margin-top: 30px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .meta { color: var(--muted); margin-bottom: 18px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 12px 0;
+    }
+    code {
+      background: #1a2443;
+      border: 1px solid #2d3a63;
+      border-radius: 6px;
+      padding: 1px 5px;
+      color: #dce6ff;
+    }
+    pre {
+      overflow: auto;
+      background: #0f162d;
+      border: 1px solid #24335a;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 14px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px;
+      vertical-align: top;
+    }
+    th { background: #18203c; text-align: left; }
+    .ok { color: var(--ok); font-weight: 700; }
+    .bad { color: var(--bad); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Test de Confirmación Fuerte</h1>
+    <h2 style="border-top:0;padding-top:0;">Protocolo de Falsabilidad Inversa</h2>
+    <p class="meta"><strong>Autor:</strong> Juan Pablo Figueroa Torres · <strong>Versión:</strong> Febrero 2026 · <strong>Complemento de:</strong> Protocolo Operacional v1</p>
+
+    <h2>Objetivo</h2>
+    <p>El protocolo original confirmó que las galaxias <strong>NON-REGIME</strong> fallan. Este protocolo busca la otra mitad del test: encontrar galaxias <strong>REGIME</strong> (<code>g_int &lt; a_crit</code>) y verificar si la predicción acierta.</p>
+    <ul>
+      <li>Si acierta sistemáticamente: <strong>la hipótesis se fortalece</strong>.</li>
+      <li>Si falla en REGIME: <strong>la hipótesis se falsifica</strong>.</li>
+    </ul>
+
+    <h2>Contexto</h2>
+    <table>
+      <thead>
+        <tr><th>Aspecto</th><th>Protocolo original</th><th>Este protocolo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Objetivo</td><td>Confirmar que NON-REGIME falla</td><td>Confirmar que REGIME acierta</td></tr>
+        <tr><td>Galaxias buscadas</td><td>Cualquiera del catálogo</td><td>Solo con <code>g_int &lt; a_crit</code></td></tr>
+        <tr><td>Resultado esperado</td><td>Error &gt; 20% ✓</td><td>Error ≤ 20% ✓</td></tr>
+        <tr><td>Poder de falsación</td><td>Moderado</td><td>Máximo — fallo aquí falsifica</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Paso 1: Criterio de búsqueda en SPARC</h2>
+    <div class="card">
+      <p><strong>Condición previa:</strong></p>
+      <pre>g_int = V² / R &lt; 1.0 × 10⁻¹¹ m/s²</pre>
+      <p><strong>Ejemplo REGIME:</strong></p>
+      <pre>V = 40 km/s, R = 5 kpc
+→ g_int = 1.04 × 10⁻¹² m/s² <span class="ok">✓ REGIME</span></pre>
+      <p><strong>Ejemplo borde/NON-REGIME:</strong></p>
+      <pre>V = 50 km/s, R = 8 kpc
+→ g_int = 1.01 × 10⁻¹¹ m/s² <span class="bad">✗ borde — NON-REGIME</span></pre>
+    </div>
+
+    <h2>Paso 2: Candidatos del catálogo SPARC</h2>
+    <table>
+      <thead>
+        <tr><th>Galaxia</th><th>V_flat est.</th><th>R_flat est.</th><th>Tipo</th><th>Por qué es candidata</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>UGCA444</td><td>~38 km/s</td><td>~2.6 kpc</td><td>Enana LSB</td><td><code>a_borde ≈ 1.8×10⁻¹¹</code>. Candidata fuerte.</td></tr>
+        <tr><td>UGCA442</td><td>~57 km/s</td><td>~6.3 kpc</td><td>Enana LSB</td><td><code>a_borde ≈ 1.6×10⁻¹¹</code>. Probable REGIME.</td></tr>
+        <tr><td>UGCA281</td><td>~30 km/s</td><td>~1.1 kpc</td><td>Enana LSB</td><td><code>a_borde ≈ 2.6×10⁻¹¹</code>. Verificar datos exactos.</td></tr>
+        <tr><td>DDO154</td><td>50 km/s</td><td>8 kpc</td><td>Enana gas</td><td><code>g_int ≈ 1.013×10⁻¹¹</code>. Caso borde.</td></tr>
+        <tr><td>NGC3741</td><td>~50 km/s</td><td>~3 kpc</td><td>Enana LSB</td><td>Masa baja (<code>~8×10⁷ M☉</code>).</td></tr>
+        <tr><td>F563-1</td><td>~95 km/s</td><td>~10 kpc</td><td>LSB</td><td>LSB clásica de muestra SPARC.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Paso 3: Flujo de ejecución</h2>
+    <ol>
+      <li>Convertir unidades a SI.</li>
+      <li>Calcular <code>g_int = V² / R</code>.</li>
+      <li>Clasificar régimen.</li>
+      <li>Calcular <code>R_T</code> y <code>V_pred</code>.</li>
+      <li>Comparar predicción vs observación.</li>
+      <li>Registrar veredicto.</li>
+    </ol>
+
+    <h2>Paso 4: Criterio de falsación</h2>
+    <pre>error% = |V_pred − V_obs| / V_obs × 100
+
+error% ≤ 20%  → CONFIRMA
+error% > 20%  → FALSIFICA (en galaxia REGIME)
+
+ratio ∈ [0.5, 2.0]  → R_T coherente con R_obs
+ratio ∉ [0.5, 2.0]  → R_T no predice R_obs</pre>
+
+    <h2>Registro (pre-registro)</h2>
+    <table>
+      <thead>
+        <tr><th>Galaxia</th><th>V_flat</th><th>R_flat</th><th>M_bar</th><th>g_int</th><th>Régimen</th><th>V_pred</th><th>R_T</th><th>Error%</th><th>Veredicto</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>UGCA444</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>pendiente</td></tr>
+        <tr><td>UGCA442</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>pendiente</td></tr>
+        <tr><td>UGCA281</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>pendiente</td></tr>
+        <tr><td>NGC3741</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>pendiente</td></tr>
+        <tr><td>F563-1</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>pendiente</td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

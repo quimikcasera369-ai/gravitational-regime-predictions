@@ -1,78 +1,52 @@
-# Gravitational Regime Transition Hypothesis – Pre-registered Predictions
+# Protocolo de Falsabilidad Inversa — Índice de Formatos
 
-## Purpose
+Sí, entendido: el contenido quedó organizado en **3 ramificaciones dentro de este mismo README** para que puedas usar el formato que prefieras.
 
-This document records falsifiable predictions derived from a dynamical regime-transition model before observational comparison.
+## Ramificación 1 — Markdown completo
+Documento completo en Markdown:
 
-The objective is to prevent post-hoc fitting and define applicability conditions prior to evaluation.
+- [`PROTOCOLO_FALSABILIDAD_INVERSA.md`](./PROTOCOLO_FALSABILIDAD_INVERSA.md)
 
----
+## Ramificación 2 — HTML completo
+Documento completo en HTML (listo para abrir en navegador con formato visual):
 
-## Core Hypothesis
+- [`PROTOCOLO_FALSABILIDAD_INVERSA.html`](./PROTOCOLO_FALSABILIDAD_INVERSA.html)
 
-Gravitational dynamics depend on crossing a critical collective regime, not solely on enclosed mass.
+## Ramificación 3 — Tablas separadas
+Todas las tablas del protocolo agrupadas en una sección independiente:
 
-A system must reach a minimum internal gravitational coherence to exhibit the transition.
-
----
-
-## Applicability Condition
-
-The model applies only to systems capable of forming a collective dynamical regime.
-
-Diffuse systems are predicted **not** to follow the transition rule.
+- [`PROTOCOLO_FALSABILIDAD_INVERSA_TABLAS.md`](./PROTOCOLO_FALSABILIDAD_INVERSA_TABLAS.md)
 
 ---
 
-## Prediction Rule
+## Vista rápida
 
-Transition radius:
+### Tabla comparativa de protocolos
 
-R_T = sqrt(GM / a_crit)
+| Aspecto | Protocolo original | Protocolo de falsabilidad inversa |
+|---|---|---|
+| Objetivo | Confirmar que NON-REGIME falla | Confirmar que REGIME acierta |
+| Galaxias buscadas | Cualquiera del catálogo | Solo con `g_int < a_crit` |
+| Resultado esperado | Error > 20% ✓ | Error ≤ 20% ✓ |
+| Poder de falsación | Moderado | Máximo — fallo aquí falsifica |
 
-Where:
+### Tabla de candidatos SPARC (estimados)
 
-* G = gravitational constant
-* M = baryonic mass
-* a_crit = critical acceleration scale
+| Galaxia | V_flat est. | R_flat est. | Tipo | Motivo |
+|---|---:|---:|---|---|
+| UGCA444 | ~38 km/s | ~2.6 kpc | Enana LSB | Candidata fuerte por aceleración de borde cercana al umbral |
+| UGCA442 | ~57 km/s | ~6.3 kpc | Enana LSB | Probable REGIME |
+| UGCA281 | ~30 km/s | ~1.1 kpc | Enana LSB | Caso límite; verificar con datos exactos |
+| DDO154 | 50 km/s | 8 kpc | Enana gas | Borde del umbral (`g_int ≈ 1.013×10⁻¹¹`) |
+| NGC3741 | ~50 km/s | ~3 kpc | Enana LSB | Posible REGIME si `R_flat` real es mayor |
+| F563-1 | ~95 km/s | ~10 kpc | LSB | Candidata clásica de muestra LSB |
 
----
+### Tabla de pre-registro
 
-## Test Protocol
-
-For each selected system:
-
-1. Classify system as REGIME / NON-REGIME before calculation
-2. Compute predicted transition radius
-3. Record prediction BEFORE consulting rotation curve data
-4. Compare with observed flattening radius
-
----
-
-## Pre-registration Table
-
-| System         | Regime Classification (prior) | Predicted R_T | Observed R | Agreement |
-| -------------- | ----------------------------- | ------------- | ---------- | --------- |
-| (to be filled) |                               |               |            |           |
-
----
-
-## Interpretation Rules
-
-If classified REGIME:
-Agreement supports the hypothesis.
-
-If classified NON-REGIME:
-Deviation supports the hypothesis.
-
-If opposite occurs:
-Hypothesis falsified.
-
----
-
-## Commitment
-
-All classifications and predictions are fixed prior to observational verification.
-No retroactive adjustments permitted.
-
-This repository acts as a timestamped scientific record.
+| Galaxia | V_flat | R_flat | M_bar | g_int | Régimen | V_pred | R_T | Error% | Veredicto |
+|---|---|---|---|---|---|---|---|---|---|
+| UGCA444 | — | — | — | — | — | — | — | — | pendiente |
+| UGCA442 | — | — | — | — | — | — | — | — | pendiente |
+| UGCA281 | — | — | — | — | — | — | — | — | pendiente |
+| NGC3741 | — | — | — | — | — | — | — | — | pendiente |
+| F563-1 | — | — | — | — | — | — | — | — | pendiente |
